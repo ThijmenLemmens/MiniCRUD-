@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button {
+    border: none;
+    background: none;
+    transition: 0.25s;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_boven {
+    display: flex;
+    justify-content: center;
+}
+
+.model {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.mainloc {
+    background-image: url(../fotos/pizzabackground.jpg);
+    width: auto;
+    height: auto;
+}
+
+.maintext {
+    font-family: 'Secular One', sans-serif;
+}
+
+.textpizza {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.mainpage {
+    width: 100%;
+    height: 800px;
+}
+
+.buttonbox {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    height: auto;
+}
+
+.buttonhome {
+    position: relative;
+    width: 175px;
+    height: 90px;
+    border-bottom: 4px solid black;
+    font-family: 'Lato', sans-serif;
+    font-size: 40px;
+}
+
+.buttonhome:hover {
+    border-top: 4px solid black;
+}
