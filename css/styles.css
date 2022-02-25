@@ -28,8 +28,8 @@ button {
 
 .mainloc {
     background-image: url(../fotos/pizzabackground.jpg);
-    width: auto;
-    height: auto;
+    background-size: 100% 100%;
+    width: 100%;
 }
 
 .maintext {
@@ -44,25 +44,32 @@ button {
 
 .mainpage {
     width: 100%;
-    height: 800px;
+    height: 700px;
+    margin-top: 20px;
 }
 
 .buttonbox {
     display: flex;
-    justify-content: space-between;
-    width: 600px;
-    height: auto;
+    justify-content: space-around;
+    width: auto;
+    height: 100px;
 }
 
 .buttonhome {
-    position: relative;
     width: 175px;
     height: 90px;
     border-bottom: 4px solid black;
     font-family: 'Lato', sans-serif;
-    font-size: 40px;
+    font-size: 35px;
+    margin: 30px;
 }
 
 .buttonhome:hover {
     border-top: 4px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+    .buttonbox {
+        flex-wrap: wrap;
+    }
 }

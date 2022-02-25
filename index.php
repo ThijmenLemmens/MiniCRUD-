@@ -30,7 +30,8 @@
         <div class="mainpage center_boven">
             <div class="buttonbox">
                 <a href="menu.php"><button class="buttonhome">Menu</button></a>
-                <button class="buttonhome">Login</button>
+                <a href="reserveren.php"><button class="buttonhome">Reserveren</button></a>
+                <a href="contact.php"><button class="buttonhome">Contact</button></a>
             </div>
         </div>
     </main>
