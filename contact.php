@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $titel = $_POST['titel'];
     $message = $_POST['text'];
     if ($email == '' || $name == '' || $onderwerp == '' || $titel == '') {
-        $error = "Vullen alle velden in!";
+        $error = "Vul alle velden in!";
     } else {
         $mail->send_mail($email, $titel, $message, $onderwerp, $name);
     }
@@ -48,25 +48,25 @@ if (isset($_POST['submit'])) {
             <div class="formplek">
                 <form action="" method="post">
                     <div class="emailplace">
-                        <input class="emailveld fontsize24" type="email" placeholder="Email" name="email">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="email" placeholder="Email" name="email">
                     </div>
                     <div class="emailplace">
-                        <input class="emailveld fontsize24" type="text" placeholder="Name" name="name">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="text" placeholder="Name" name="name">
                     </div>
                     <div class="emailplace">
-                        <input class="emailveld fontsize24" type="text" placeholder="Onderwerp" name="onderwerp">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="text" placeholder="Onderwerp" name="onderwerp">
                     </div>
                     <div class="emailplace">
-                        <input class="emailveld fontsize24" type="text" placeholder="Titel" name="titel">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="text" placeholder="Titel" name="titel">
                     </div>
                     <div class="text">
-                        <textarea class="textveld" name="text"></textarea>
+                        <textarea class="textveld fontcontact clearforms submitbutton" name="text" placeholder="Type hier uw bericht!"></textarea>
                     </div>
                     <div class="errorplek">
-                        <p> <?php echo $error?> </p>
+                        <p class="fontcontact"> <?php echo $error?> </p>
                     </div>
                     <div class="emailplace">
-                        <input class="submitveld" type="submit" id="submit" value="Verzend" name="submit">
+                        <input class="submitveld clearforms submitbutton" type="submit" id="submit" value="Verzend" name="submit">
                     </div>
                 </form>
             </div>
