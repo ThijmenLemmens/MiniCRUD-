@@ -122,7 +122,6 @@ button {
 .formplek {
     width: 500px;
     height: 500px;
-    border-radius: 4px;
 }
 
 .emailplace {
@@ -174,5 +173,16 @@ button {
     border-bottom: 2px solid black;
 }
 
+/*
+    Reserveren
+*/
 
+.achtergrondreserveren {
+    background-image: url(../fotos/pizzaspecial.jpg);
+    background-size: 100% 100%;
+    height: 750px;
+}
 
+.red {
+    background-color: red;
+}
