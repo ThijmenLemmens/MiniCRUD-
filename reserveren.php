@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
         $error = 'Vul alle velden in!';
     } else {
         if (is_numeric($mensen)) {
-            $query = "INSERT INTO reserveren (email, name, vote) VALUES ('$email', '$password', '0')";
+//            $query = "INSERT INTO reserveren (email, name, vote) VALUES ('$email', '$password', '0')";
         } else {
             $error = 'Mensen moeten als nummer!';
         }
