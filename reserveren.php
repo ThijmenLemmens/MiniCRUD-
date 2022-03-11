@@ -2,10 +2,12 @@
 
 include("PHPClasse/Mail.php");
 
-$conn = new mysqli('localhost', 'root', '', 'pizza');
+$conn = new PDO("mysql:host=localhost;dbname=pizza", 'root', '');
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
 
 $mail = new Mail();
@@ -17,11 +19,21 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $mensen = $_POST['mensen'];
     $text = $_POST['text'];
-    if ($name == '' || $email == '' || $mensen == '' || $text == '') {
+    $date = $_POST['date'];
+    $time = $_POST['time'];
+    if ($name == '' || $email == '' || $mensen == '') {
         $error = 'Vul alle velden in!';
     } else {
         if (is_numeric($mensen)) {
-//            $query = "INSERT INTO reserveren (email, name, vote) VALUES ('$email', '$password', '0')";
+            if ($mensen >= 20 || $mensen <= 0) {
+                $error = "Max 20 man!";
+            } else {
+                $error = "Reservering geplaats";
+                $sql = "INSERT INTO reserveren (email, naam, opmerking, mensen, date, time) VALUES ('$email', '$name', '$text', '$mensen', '$date', '$time')";
+                $conn->exec($sql);
+                $mail->send_mail($email, "Reservering", "U hebt een reservering gemaakt voor ". $mensen .", op de naam van ". $name
+                    ,"Reservering", $name);
+            }
         } else {
             $error = 'Mensen moeten als nummer!';
         }
@@ -37,7 +49,7 @@ if (isset($_POST['submit'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
-    <title>3Reserveren</title>
+    <title>Reserveren</title>
 </head>
 <body>
     <main class="achtergrondreserveren">
@@ -50,27 +62,33 @@ if (isset($_POST['submit'])) {
         <div class="center">
             <div class="formplek red">
                 <form action="" method="post">
-                    <div class="">
-                        <input type="text" placeholder="Name" name="name">
+                    <div class="emailplace">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="text" placeholder="Name" name="name">
                     </div>
-                    <div class="">
-                        <input type="email" placeholder="Email" name="email">
+                    <div class="emailplace">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="email" placeholder="Email" name="email">
                     </div>
-                    <div class="">
-                        <input type="text" placeholder="Mensen" name="mensen">
+                    <div class="emailplace">
+                        <input class="emailveld fontsize24 clearforms borderbotemcontact" type="text" placeholder="Mensen" name="mensen">
                     </div>
-                    <div class="">
-                        <input type="text" placeholder="Type hier uw opmerking!" name="text">
+                    <div class="center textreserveren">
+                        <textarea class="textveldreserveren fontcontact clearforms submitbutton" name="text" placeholder="Type hier uw opmerking!"></textarea>
                     </div>
-                    <div>
+                    <div class="emailplacereserveren spacearound">
+                        <input type="date" name="date">
+                        <input type="time" name="time">
+                    </div>
+                    <div class="emailplace">
                         <p class="fontcontact"> <?php echo $error?> </p>
                     </div>
-                    <div class="">
-                        <input type="submit" name="submit" value="Verzend">
+                    <div class="emailplace">
+                        <input class="submitveld clearforms submitbutton" type="submit" name="submit" value="Verzend">
                     </div>
                 </form>
             </div>
         </div>
     </main>
+    lemmensthijmen@gmail.com
+    Pannenkoek
 </body>
 </html>

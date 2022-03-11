@@ -1,3 +1,1 @@
-let naam = "Thijmen"
-
-console.log(`ik ben ${naam}`)
+const tekst  = document.querySelector('')
