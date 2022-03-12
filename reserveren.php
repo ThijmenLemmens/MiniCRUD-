@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         $error = 'Vul alle velden in!';
     } else {
         if (is_numeric($mensen)) {
-            if ($mensen >= 20 || $mensen <= 0) {
+            if ($mensen > 20 || $mensen <= 0 ) {
                 $error = "Max 20 man!";
             } else {
                 $error = "Reservering geplaats";
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
             <h2 class="maintext fontsize30">Reserveren</h2>
         </div>
         <div class="center">
-            <div class="formplek red">
+            <div class="formplek">
                 <form action="" method="post">
                     <div class="emailplace">
                         <input class="emailveld fontsize24 clearforms borderbotemcontact" type="text" placeholder="Name" name="name">
@@ -75,8 +75,8 @@ if (isset($_POST['submit'])) {
                         <textarea class="textveldreserveren fontcontact clearforms submitbutton" name="text" placeholder="Type hier uw opmerking!"></textarea>
                     </div>
                     <div class="emailplacereserveren spacearound">
-                        <input type="date" name="date">
-                        <input type="time" name="time">
+                        <input class="clearforms submitbutton" type="date" name="date">
+                        <input class="clearforms submitbutton" type="time" name="time">
                     </div>
                     <div class="emailplace">
                         <p class="fontcontact"> <?php echo $error?> </p>
@@ -88,7 +88,5 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </main>
-    lemmensthijmen@gmail.com
-    Pannenkoek
 </body>
 </html>
