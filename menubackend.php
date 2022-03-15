@@ -1,4 +1,12 @@
-<?php ?>
+<?php
+
+session_start();
+
+$naam = $_SESSION['naam'];
+
+echo $naam
+
+?>
 <!doctype html>
 <html lang="en">
 <head>

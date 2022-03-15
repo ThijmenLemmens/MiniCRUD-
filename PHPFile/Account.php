@@ -32,16 +32,20 @@ function makeAccount($naam, $wachtwoord ,$email) {
     }
 }
 
-function login($naam, $wachtwoord, $email) {
+function login($naam ,$wachtwoord, $email) {
     global $conn, $error;
-    $get = "SELECT * FROM accounts where naam = '$naam' AND wachtwoord = '$wachtwoord' AND email = '$email'";
-    $result = $conn->prepare($get);
-    $result->execute();
-    if ($result->rowCount() == 1) {
-        redirect("menubackend.php");
-        $error = "logged in!";
+    if (empty($wachtwoord) || empty($email) || empty($naam)) {
+        $error = "je moet alles invullen!";
     } else {
-        $error = "account bestaat niet!";
+        $get = "SELECT * FROM accounts where naam = '$naam' AND wachtwoord = '$wachtwoord' AND email = '$email'";
+        $result = $conn->prepare($get);
+        $result->execute();
+        if ($result->rowCount() == 1) {
+            redirect("menubackend.php");
+            $error = "logged in!";
+        } else {
+            $error = "account bestaat niet!";
+        }
     }
 }
 
