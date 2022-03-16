@@ -7,20 +7,25 @@ session_start();
 
 $error = printError();
 
-$naam = '';
+$_SESSION['naam'] = '';
 $wachtwoord = '';
+$wachtwoordcheck = '';
 $email = '';
 
 if (isset($_POST['loginsubmit'])) {
-    $naam = $_POST['naam'];
+    $_SESSION['naam'] = $_POST['naam'];
     $wachtwoord = $_POST['wachtwoord'];
     $email = $_POST['email'];
-    login($naam, $wachtwoord, $email);
+    login($_SESSION['naam'], $wachtwoord, $email);
 }
 
-//if (isset()) {
-//
-//}
+if (isset($_POST['signupsubmit'])) {
+    $_SESSION['naam'] = $_POST['naam'];
+    $wachtwoord = $_POST['wachtwoord'];
+    $wachtwoord = $_POST['wachtwoordcheck'];
+    $email = $_POST['email'];
+    makeAccount($_SESSION['naam'], $wachtwoord, $wachtwoordcheck, $email);
+}
 
 ?>
 <!doctype html>
@@ -34,6 +39,9 @@ if (isset($_POST['loginsubmit'])) {
     <title>Login / Signup</title>
 </head>
 <body>
+<div class="backbuttonplace">
+    <a href="index.php"><button class="">back</button></a>
+</div>
 <main class="main_login_signup">
     <div class="login_signup_place center">
         <div class="login_block">
@@ -60,16 +68,32 @@ if (isset($_POST['loginsubmit'])) {
         </div>
     </div>
     <div class="login_signup_place center blauw">
-        <div class="">
-
+        <div class="login_block">
+            <div class="text_place center">
+                <h2 class="fontcontact"> Signup </h2>
+            </div>
+            <form action="" method="post">
+                <div class="signup_input_plek center">
+                    <input class="clearforms style_input" type="text" placeholder="Naam" name="naam">
+                </div>
+                <div class="signup_input_plek center">
+                    <input class="clearforms style_input" type="email" placeholder="Email" name="email">
+                </div>
+                <div class="signup_input_plek center">
+                    <input class="clearforms style_input" type="password" placeholder="Password" name="wachtwoord">
+                </div>
+                <div class="signup_input_plek center">
+                    <input class="clearforms style_input" type="password" placeholder="Password" name="wachtwoordcheck">
+                </div>
+                <div class="login_error_plek">
+                    <p> <?php echo $error ?> </p>
+                </div>
+                <div class="signup_input_plek center">
+                    <input class="clearforms style_input" type="submit" name="signupsubmit">
+                </div>
+            </form>
         </div>
     </div>
 </main>
-<form action="" method="post">
-    <input type="text" name="naam">
-    <input type="password" name="wachtwoord">
-    <input type="email" name="email">
-    <input type="submit" name="loginsubmit">
-</form>
 </body>
 </html>

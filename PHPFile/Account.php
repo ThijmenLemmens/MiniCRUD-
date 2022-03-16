@@ -4,7 +4,7 @@ $conn = new PDO("mysql:host=localhost;dbname=pizza", 'root', '');
 
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "PDO works";
+//    echo "PDO works";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
@@ -18,17 +18,25 @@ function redirect($url) {
     die();
 }
 
-function makeAccount($naam, $wachtwoord ,$email) {
+function makeAccount($naam, $wachtwoord, $wachtwoordcheck, $email) {
     global $conn, $error;
-    $get = "SELECT * FROM accounts where email= '".$email."'";
-    $result = $conn->prepare($get);
-    $result->execute();
-    if ($result->rowCount() >= 1) {
-        $error = "account bestaat al!";
+    if (empty($wachtwoord) || empty($email) || empty($naam)) {
+        $error = "je moet alles invullen!";
     } else {
-        $sql = "INSERT INTO accounts (naam, wachtwoord, email) VALUES ('$naam', '$wachtwoord', '$email')";
-        $result = $conn->prepare($sql);
-        $result->execute();
+        if ($wachtwoord == $wachtwoordcheck) {
+            $get = "SELECT * FROM accounts where email= '".$email."'";
+            $result = $conn->prepare($get);
+            $result->execute();
+            if ($result->rowCount() >= 1) {
+                $error = "account bestaat al!";
+            } else {
+                $sql = "INSERT INTO accounts (naam, wachtwoord, email) VALUES ('$naam', '$wachtwoord', '$email')";
+                $result = $conn->prepare($sql);
+                $result->execute();
+            }
+        } else {
+            $error = "wachtwoord moeten hetzelfde zijn!";
+        }
     }
 }
 
