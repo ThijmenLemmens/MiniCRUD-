@@ -1,7 +1,6 @@
 <?php
 
-include("PHPFile/Account.php");
-include("PHPClasse/Mail.php");
+include("includes/PHPFile/Account.php");
 
 session_start();
 

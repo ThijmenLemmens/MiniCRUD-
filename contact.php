@@ -1,6 +1,8 @@
 <?php
 
-include("PHPClasse/Mail.php");
+use PHPMailer\PHPMailer\PHPClasse\Mail;
+
+include("includes/PHPClasse/Mail.php");
 
 $mail = new Mail();
 
@@ -38,9 +40,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <main class="maincontact">
-        <div class="backbuttonplace">
-            <a href="index.php"><button class="buttonhome">Back</button></a>
-        </div>
+        <?php include("includes/PHPFile/header.php") ?>
         <div class="textplacecontact center">
             <h2 class="maintext fontsize30">Contact</h2>
         </div>
