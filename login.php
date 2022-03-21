@@ -38,9 +38,7 @@ if (isset($_POST['signupsubmit'])) {
     <title>Login / Signup</title>
 </head>
 <body>
-<div class="backbuttonplace">
-    <a href="index.php"><button class="">back</button></a>
-</div>
+<?php include("includes/PHPFile/header.php"); ?>
 <main class="main_login_signup">
     <div class="login_signup_place center">
         <div class="login_block">
