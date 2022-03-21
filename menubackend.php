@@ -4,6 +4,17 @@ session_start();
 
 $naam = $_SESSION['naam'];
 
+function redirect($url) {
+    ob_start();
+    header('Location: '.$url);
+    ob_end_flush();
+    die();
+}
+
+if (empty($naam)) {
+    redirect("login.php");
+}
+
 echo $naam
 
 ?>
@@ -15,7 +26,7 @@ echo $naam
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Backend</title>
+    <title>Menu-Backend - Welcome <?php ?></title>
 </head>
 <body>
     <main>

@@ -27,16 +27,16 @@ button {
     justify-content: space-around;
 }
 
+.flex_warp {
+    flex-wrap: wrap;
+}
+
 .fontsize30 {
     font-size: 30px;
 }
 
 .fontsize24 {
     font-size: 24px;
-}
-
-.backend_button {
-
 }
 
 .center_boven {
@@ -285,4 +285,25 @@ button {
 .main_menu {
     background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.3)), url(../fotos/pexels-cats-coming-365459.jpg);
     background-size: 100% 100%;
+}
+
+/*
+    Backend
+*/
+
+.main_backend {
+    height: 700px;
+    width: 100%;
+}
+
+.blok_backend {
+    width: 200px;
+    height: 200px;
+    background-color: lightgray;
+    border: 3px solid black;
+}
+
+.button_backend {
+    width: 100%;
+    height: 100%;
 }

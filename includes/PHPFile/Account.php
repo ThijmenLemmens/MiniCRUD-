@@ -49,7 +49,7 @@ function login($naam ,$wachtwoord, $email) {
         $result = $conn->prepare($get);
         $result->execute();
         if ($result->rowCount() == 1) {
-            redirect("menubackend.php");
+            redirect("backend.php");
             $error = "logged in!";
         } else {
             $error = "account bestaat niet!";
